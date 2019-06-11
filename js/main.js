@@ -5,6 +5,10 @@ const time = document.getElementById('time'),
     name = document.getElementById('name'),
     focus = document.getElementById('focus');
 
+    // Show Am and Pm
+    const showAmPm = true;
+
+
     function showTime(){
 
         // Add time 
@@ -17,10 +21,10 @@ const time = document.getElementById('time'),
         hour =  hour % 12 || 12;
 
         // adding am pm 
-        const amPM = hour >= 12 ? 'PM' : 'AM';
+        const amPm = hour >= 12 ? 'AM' : 'PM';
 
         // ouput time 
-        time.innerHTML = `${addZero(hour)}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)}`;
+        time.innerHTML = `${addZero(hour)}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)} ${showAmPm ? amPm : ''}`;
 
         // adding refresing page
         setTimeout(showTime, 1000);
