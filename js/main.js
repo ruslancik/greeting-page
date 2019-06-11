@@ -20,11 +20,37 @@ const time = document.getElementById('time'),
         const amPM = hour >= 12 ? 'PM' : 'AM';
 
         // ouput time 
-        time.innerHTML = `${hour}<span>:</span>${min}<span>:</span>${sec}`;
+        time.innerHTML = `${addZero(hour)}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)}`;
 
         // adding refresing page
         setTimeout(showTime, 1000);
 
     }
 
+    function addZero(n){
+        return(parseInt(n, 10) < 10 ? '0':'') + n;
+    }
+
+    // Set Background and Greeting
+function setBgGreetAndImg() {
+    let today = new Date(),
+      hour = today.getHours();
+  
+    if (hour < 12) {
+      // Morning
+      document.body.style.backgroundImage = "url('https://i.ibb.co/7vDLJFb/morning.jpg')";
+      greeting.textContent = 'Good Morning, ';
+    } else if (hour < 18) {
+      // Afternoon
+      document.body.style.backgroundImage = "url('https://i.ibb.co/3mThcXc/afternoon.jpg')";
+      greeting.textContent = 'Good Afternoon, ';
+    } else {
+      // Evening
+      document.body.style.backgroundImage = "url('https://i.ibb.co/924T2Wv/night.jpg')";
+      greeting.textContent = 'Good Evening, ';
+      document.body.style.color = 'white';
+    }
+  }
+    //Run
     showTime();
+    setBgGreetAndImg();
